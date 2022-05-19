@@ -9,12 +9,11 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>
-        Chaters      </h1>
+      <h1>Chaters</h1>
 
-        <p>Chat, chat, and more chat</p>
+      <p>Chat, chat, and more chat</p>
     </div>
   );
-}
+};
 
 export default Home;
