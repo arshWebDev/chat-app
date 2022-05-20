@@ -1,8 +1,6 @@
 # Chaters
-A chat app for personal chats, team chats, friends and family chats.
 
-### What I learned
-It's my first project with next.js and firebase, it learned a lot about next.js and firebase
+A chat app for personal chats, team chats, friends and family chats.
 
 ## Tech Stack
 
@@ -22,7 +20,7 @@ It's my first project with next.js and firebase, it learned a lot about next.js 
   - search chats or a particular message in a chat,
   - send voice messages
 
-
 ## Author
+
 - [Email](mailto:arshgoyalDev@gmail.com)
 - [Twitter](https://twitter.com/arshWebDev)
