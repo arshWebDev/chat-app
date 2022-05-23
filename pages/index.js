@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Navbar from "../components/Navbar";
 
 const Home = () => {
   return (
@@ -9,8 +8,6 @@ const Home = () => {
         <meta name="description" content="App for passionate chaters" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Navbar />
     </main>
   );
 };
