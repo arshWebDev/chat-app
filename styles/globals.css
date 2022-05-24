@@ -17,3 +17,32 @@
 html {
   font-family: "Libre Franklin", sans-serif;
 }
+
+/* ------------------- */
+
+/* ------------------- */
+/* components */
+
+.icon svg > path {
+  @apply fill-black;
+}
+
+.input:focus ~ .input-icon {
+  @apply -left-2 -top-2 translate-y-0 bg-gray-50 shadow-lg;
+}
+
+.input:focus ~ .input-placeholder {
+  @apply left-16 opacity-0;
+}
+
+.eye-slash::before {
+  content: '';
+  @apply absolute top-0 left-0 w-[120%] h-0.5 bg-black transition-transform ;
+  transform: translate(-2px, 8px) rotate(-45deg) scaleX(0);
+}
+
+.eye-slash-visible::before {
+  transform: translate(-2px, 8px) rotate(-45deg) scaleX(1);
+}
+
+/* ------------------- */

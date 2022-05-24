@@ -1,6 +1,16 @@
+import {useEffect} from 'react'
+
 import Head from "next/head";
 
+import { useRouter } from "next/router";
+
 const Home = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/sign-up');
+  }, []);
+
   return (
     <main className="bg-slate-50 h-screen">
       <Head>
@@ -8,8 +18,6 @@ const Home = () => {
         <meta name="description" content="App for passionate chaters" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      
     </main>
   );
 };
