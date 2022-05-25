@@ -10,9 +10,6 @@ module.exports = {
       colors: {
         primary: "#7560FE",
       },
-      fontFamily: {
-        roboto: ["Roboto", "sans-serif"],
-      },
     },
   },
   plugins: [],
