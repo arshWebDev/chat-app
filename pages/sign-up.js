@@ -1,9 +1,11 @@
 import { useState } from "react";
 
 import Head from "next/head";
-import FormInput from "../components/FormInput";
 import Link from "next/link";
+
 import { validateSignUpForm } from "../utils";
+
+import { FormInput, PasswordInput } from "../components/inputs";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -26,10 +28,9 @@ const SignUp = () => {
         <button className="flex items-center justify-center gap-2 w-full py-3 px-4 border-2 border-solid border-black rounded-lg">
           <span className="icon">
             <svg
-              width="24"
-              height="24"
+              width="25"
+              height="25"
               viewBox="0 0 24 24"
-              fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
@@ -81,7 +82,7 @@ const SignUp = () => {
               form="sign-up"
               error={errorEmail}
             />
-            <FormInput
+            <PasswordInput
               type="password"
               value={password}
               setValue={setPassword}
@@ -99,9 +100,7 @@ const SignUp = () => {
         <p className="text-sm text-center font-medium mt-4">
           Already have an account?{" "}
           <Link href="/login">
-            <a className="font-semibold text-primary">
-              Login
-            </a>
+            <a className="font-semibold text-primary">Login</a>
           </Link>
         </p>
       </div>

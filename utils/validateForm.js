@@ -20,7 +20,7 @@ const validateSignUpForm = (
     setErrorEmail(false);
   }
 
-  if (password.length === 0) {
+  if (password.length < 6) {
     setErrorPassword("Password length should be at least 6 characters ");
   }
   if (password.length >= 6) {
