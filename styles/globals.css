@@ -23,9 +23,13 @@ html {
 /* ------------------- */
 /* components */
 
+/* icons */
+
 .icon svg > path {
   @apply fill-black;
 }
+
+/* form input */
 
 .input:focus ~ .input-icon {
   @apply -translate-x-3.5 -translate-y-3.5 bg-gray-50 shadow-lg shadow-gray-300;
@@ -35,14 +39,16 @@ html {
   @apply left-16 opacity-0;
 }
 
+/* show password */
+
 .eye-slash::before {
-  content: "";
-  @apply absolute top-0 left-0 w-[120%] h-0.5 bg-black transition-transform;
-  transform: translate(-2px, 8px) rotate(-45deg) scaleX(0);
+  @apply content-[""] absolute top-0 left-0 w-[120%] h-0.5 bg-black transition-transform origin-right;
+  transform: translate(-5px, 0px) rotate(-45deg) scaleX(0);
 }
 
 .eye-slash-visible::before {
-  transform: translate(-2px, 8px) rotate(-45deg) scaleX(1);
+  @apply origin-right;
+  transform: translate(-5px, 0px) rotate(-45deg) scaleX(1);
 }
 
 /* ------------------- */
