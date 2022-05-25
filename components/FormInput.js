@@ -8,13 +8,13 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
       return "bg-transparent w-0";
     }
     if (value.length < 6) {
-      return "bg-red-500 w-1/4";
+      return "bg-red-600 w-1/4";
     }
     if (value.length >= 6 && value.length <= 10) {
       return "bg-yellow-400 w-2/4";
     }
     if (value.length > 10 && value.length <= 16) {
-      return "bg-blue-400 w-3/4";
+      return "bg-blue-300 w-3/4";
     }
     if (value.length > 16) {
       return "bg-green-400 w-full";
@@ -23,7 +23,7 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
 
   const getPasswordStrengthWords = () => {
     if (value.length === 0) {
-      return "No Password";
+      return "Password Strength";
     }
     if (value.length < 6) {
       return "Too weak";
@@ -44,10 +44,10 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
       className={`relative flex items-center bg-gray-100 rounded-lg ${
         type === "password" && "pr-0"
       } ${
-        error && "outline-2 outline outline-red-600"
+        error && "outline outline-2 outline-red-500 md:outline-none"
       } transition-all duration-300`}
     >
-      <div className="relative w-full pl-12">
+      <div className="relative flex flex-row-reverse items-center pl-2 gap-2 w-full">
         <input
           type={
             passwordVisible ? "text" : type === "password" ? "password" : "text"
@@ -61,7 +61,7 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
         />
         <label
           htmlFor={type + form}
-          className="input-icon absolute top-1/2 -translate-y-1/2 left-2 grid place-items-center w-8 h-8 rounded transition-all"
+          className="input-icon grid place-items-center w-10 h-8 rounded transition-all"
         >
           {type === "name" && (
             <span className="icon w-4 h-4">
@@ -123,7 +123,7 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
         <button
           type="button"
           onClick={() => setPasswordVisible(!passwordVisible)}
-          className="grid place-items-center w-12 h-12"
+          className="grid place-items-center w-12 h-12 focus:outline-none"
         >
           <span
             className={`eye-slash relative icon ${
@@ -151,18 +151,18 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
       )}
 
       <div
-        className={`absolute z-10 -bottom-5 left-1 py-1 px-3 bg-white rounded shadow-xl pointer-events-none transition-all duration-300 ${
+        className={`hidden md:block absolute z-[10000] -bottom-5 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:left-80 w-max max-w-[200px] py-1 px-3 bg-white rounded shadow-xl pointer-events-none transition-all duration-300 ${
           error ? "opacity-100" : "opacity-0"
         }`}
       >
-        <p className="text-xs text-red-600 font-semibold">{error}</p>
+        <p className="text-xs text-red-500 font-bold">{error}</p>
       </div>
 
       {type === "password" && (
         <div className="absolute -bottom-6 left-0 flex items-center gap-3 w-full">
           <div className="relative w-full h-1 bg-gray-300 rounded-2xl">
             <div
-              className={`absolute z-20 top-0 left-0 h-1 ${checkPasswordStrength()} rounded-2xl transition-all duration-300`}
+              className={`absolute z-[5] top-0 left-0 h-1 ${checkPasswordStrength()} rounded-2xl transition-all duration-300`}
             ></div>
           </div>
           <div className="min-w-max font-semibold text-sm text-gray-400">

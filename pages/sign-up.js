@@ -41,7 +41,7 @@ const SignUp = () => {
               />
             </svg>
           </span>
-          <span className="font-medium">Sign in with Google</span>
+          <span className="font-semibold">Sign in with Google</span>
         </button>
 
         <span className="block text-lg text-center font-medium text-gray-400 my-5">
@@ -96,10 +96,10 @@ const SignUp = () => {
           </button>
         </form>
 
-        <p className="text-sm text-center mt-4">
+        <p className="text-sm text-center font-medium mt-4">
           Already have an account?{" "}
           <Link href="/login">
-            <a className="font-medium text-primary underline underline-offset-1">
+            <a className="font-semibold text-primary">
               Login
             </a>
           </Link>
