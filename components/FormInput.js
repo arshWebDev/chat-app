@@ -4,21 +4,27 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const checkPasswordStrength = () => {
+    if (value.length === 0) {
+      return "bg-transparent w-0";
+    }
     if (value.length < 6) {
-      return "bg-red-500 w-[25%]";
+      return "bg-red-500 w-1/4";
     }
     if (value.length >= 6 && value.length <= 10) {
-      return "bg-yellow-400 w-[50%]";
+      return "bg-yellow-400 w-2/4";
     }
     if (value.length > 10 && value.length <= 16) {
-      return "bg-blue-400 w-[75%]";
+      return "bg-blue-400 w-3/4";
     }
     if (value.length > 16) {
-      return "bg-green-400 w-[100%]";
+      return "bg-green-400 w-full";
     }
   };
 
   const getPasswordStrengthWords = () => {
+    if (value.length === 0) {
+      return "No Password";
+    }
     if (value.length < 6) {
       return "Too weak";
     }
@@ -154,14 +160,14 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
 
       {type === "password" && (
         <div className="absolute -bottom-6 left-0 flex items-center gap-3 w-full">
-          <div className="relative w-full h-1 rounded-2xl">
+          <div className="relative w-full h-1 bg-gray-300 rounded-2xl">
             <div
-              className={`absolute z-20 top-0 left-0 h-1 bg-transparent w-0 ${checkPasswordStrength()} rounded-2xl transition-all duration-300`}
+              className={`absolute z-20 top-0 left-0 h-1 ${checkPasswordStrength()} rounded-2xl transition-all duration-300`}
             ></div>
           </div>
-          <span className="w-24 font-semibold text-sm text-gray-400">
+          <div className="min-w-max font-semibold text-sm text-gray-400">
             {getPasswordStrengthWords()}
-          </span>
+          </div>
         </div>
       )}
     </div>
