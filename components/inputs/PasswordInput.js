@@ -76,9 +76,25 @@ const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
       <div className="absolute -bottom-6 left-0 flex items-center gap-3 w-full">
         <div className="relative w-full h-1 bg-gray-300 rounded-2xl">
           <div
-            className={`absolute z-[5] top-0 left-0 h-1 ${checkPasswordStrength(
-              value
-            )} rounded-2xl transition-all duration-300`}
+            className={`absolute z-[5] top-0 left-0 h-1 
+            ${
+              checkPasswordStrength(value) === "transparent"
+                ? "bg-transparent w-0"
+                : ""
+            }
+            ${checkPasswordStrength(value) === "1/4" ? "bg-red-500 w-1/4" : ""}
+            ${
+              checkPasswordStrength(value) === "1/2"
+                ? "bg-yellow-400 w-1/2"
+                : ""
+            }
+            ${checkPasswordStrength(value) === "3/4" ? "bg-blue-400 w-3/4" : ""}
+            ${
+              checkPasswordStrength(value) === "full"
+                ? "bg-green-500 w-full"
+                : ""
+            }
+             rounded-2xl transition-all duration-300`}
           ></div>
         </div>
         <div className="min-w-max font-semibold text-sm text-gray-400">

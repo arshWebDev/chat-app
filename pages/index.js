@@ -15,10 +15,6 @@ const Home = () => {
     } else {
       document.body.classList.remove("dark");
     }
-    
-    // router.push('/sign-up');
-
-    // eslint-disable-next-line
   }, [darkTheme]);
 
   return (

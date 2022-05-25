@@ -1,18 +1,23 @@
 const checkPasswordStrength = (value) => {
   if (value.length === 0) {
-    return "bg-transparent w-0";
+    return "transparent";
+    // return "bg-transparent w-0";
   }
   if (value.length < 6) {
-    return "bg-red-600 w-1/4";
+    return "1/4";
+    // return "bg-red-600 w-1/4";
   }
   if (value.length >= 6 && value.length <= 10) {
-    return "bg-yellow-400 w-2/4";
+    return "1/2";
+    // return "bg-yellow-400 w-2/4";
   }
   if (value.length > 10 && value.length <= 16) {
-    return "bg-blue-300 w-3/4";
+    return "3/4";
+    // return "bg-blue-300 w-3/4";
   }
   if (value.length > 16) {
-    return "bg-green-400 w-full";
+    return "full";
+    // return "bg-green-400 w-full";
   }
 };
 
