@@ -3,11 +3,16 @@ import { useState } from "react";
 import Head from "next/head";
 import FormInput from "../components/FormInput";
 import Link from "next/link";
+import { validateSignUpForm } from "../utils";
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [errorName, setErrorName] = useState(false);
+  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
 
   return (
     <main className="grid place-items-center min-h-screen md:py-20 bg-gray-50">
@@ -15,7 +20,7 @@ const SignUp = () => {
         <title>Sign Up - Chaters</title>
       </Head>
 
-      <div className="w-[80%] md:w-[440px] md:py-10 md:px-10 bg-white rounded-2xl shadow-2xl shadow-gray-200">
+      <div className="w-[80%] md:w-[440px] md:py-10 md:px-10 md:bg-white rounded-2xl md:shadow-2xl md:shadow-gray-200">
         <h1 className="text-3xl text-center font-semibold mb-10">Sign Up</h1>
 
         <button className="flex items-center justify-center gap-2 w-full py-3 px-4 border-2 border-solid border-black rounded-lg">
@@ -43,7 +48,22 @@ const SignUp = () => {
           OR
         </span>
 
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const validate = validateSignUpForm(
+              name,
+              setErrorName,
+              email,
+              setErrorEmail,
+              password,
+              setErrorPassword
+            );
+
+            if (errorName || errorEmail || errorPassword) return;
+            console.log("hello");
+          }}
+        >
           <div className="flex flex-col gap-4">
             <FormInput
               type="name"
@@ -51,6 +71,7 @@ const SignUp = () => {
               setValue={setName}
               placeholder="Username"
               form="sign-up"
+              error={errorName}
             />
             <FormInput
               type="email"
@@ -58,6 +79,7 @@ const SignUp = () => {
               setValue={setEmail}
               placeholder="Email address"
               form="sign-up"
+              error={errorEmail}
             />
             <FormInput
               type="password"
@@ -65,10 +87,11 @@ const SignUp = () => {
               setValue={setPassword}
               placeholder="Password"
               form="sign-up"
+              error={errorPassword}
             />
           </div>
 
-          <button className="w-full text-white font-semibold py-3 bg-primary rounded-lg mt-6">
+          <button className="w-full text-white font-semibold py-3 bg-primary rounded-lg mt-10">
             Create Account
           </button>
         </form>

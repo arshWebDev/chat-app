@@ -1,13 +1,45 @@
 import { useState } from "react";
 
-const FormInput = ({ type, value, setValue, placeholder, form }) => {
+const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const checkPasswordStrength = () => {
+    if (value.length < 6) {
+      return "bg-red-500 w-[25%]";
+    }
+    if (value.length >= 6 && value.length <= 10) {
+      return "bg-yellow-400 w-[50%]";
+    }
+    if (value.length > 10 && value.length <= 16) {
+      return "bg-blue-400 w-[75%]";
+    }
+    if (value.length > 16) {
+      return "bg-green-400 w-[100%]";
+    }
+  };
+
+  const getPasswordStrengthWords = () => {
+    if (value.length < 6) {
+      return "Too weak";
+    }
+    if (value.length >= 6 && value.length <= 10) {
+      return "Good";
+    }
+    if (value.length > 10 && value.length <= 16) {
+      return "Strong";
+    }
+    if (value.length > 16) {
+      return "Strongest";
+    }
+  };
 
   return (
     <div
-      className={`flex items-center bg-gray-100 rounded-lg ${
+      className={`relative flex items-center bg-gray-100 rounded-lg ${
         type === "password" && "pr-0"
-      }`}
+      } ${
+        error && "outline-2 outline outline-red-600"
+      } transition-all duration-300`}
     >
       <div className="relative w-full pl-12">
         <input
@@ -110,6 +142,27 @@ const FormInput = ({ type, value, setValue, placeholder, form }) => {
             </svg>
           </span>
         </button>
+      )}
+
+      <div
+        className={`absolute z-10 -bottom-5 left-1 py-1 px-3 bg-white rounded shadow-xl pointer-events-none transition-all duration-300 ${
+          error ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <p className="text-xs text-red-600 font-semibold">{error}</p>
+      </div>
+
+      {type === "password" && (
+        <div className="absolute -bottom-6 left-0 flex items-center gap-3 w-full">
+          <div className="relative w-full h-1 rounded-2xl">
+            <div
+              className={`absolute z-20 top-0 left-0 h-1 bg-transparent w-0 ${checkPasswordStrength()} rounded-2xl transition-all duration-300`}
+            ></div>
+          </div>
+          <span className="w-24 font-semibold text-sm text-gray-400">
+            {getPasswordStrengthWords()}
+          </span>
+        </div>
       )}
     </div>
   );

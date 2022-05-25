@@ -36,8 +36,8 @@ html {
 }
 
 .eye-slash::before {
-  content: '';
-  @apply absolute top-0 left-0 w-[120%] h-0.5 bg-black transition-transform ;
+  content: "";
+  @apply absolute top-0 left-0 w-[120%] h-0.5 bg-black transition-transform;
   transform: translate(-2px, 8px) rotate(-45deg) scaleX(0);
 }
 
