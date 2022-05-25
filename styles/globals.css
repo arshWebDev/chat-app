@@ -28,7 +28,7 @@ html {
 }
 
 .input:focus ~ .input-icon {
-  @apply -left-2 -top-2 translate-y-0 bg-gray-50 shadow-lg;
+  @apply -left-1 -top-1 translate-y-0 bg-gray-50 shadow-lg shadow-gray-300;
 }
 
 .input:focus ~ .input-placeholder {

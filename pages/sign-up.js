@@ -50,18 +50,21 @@ const SignUp = () => {
               value={name}
               setValue={setName}
               placeholder="Username"
+              form="sign-up"
             />
             <FormInput
               type="email"
               value={email}
               setValue={setEmail}
               placeholder="Email address"
+              form="sign-up"
             />
             <FormInput
               type="password"
               value={password}
               setValue={setPassword}
               placeholder="Password"
+              form="sign-up"
             />
           </div>
 
@@ -73,7 +76,9 @@ const SignUp = () => {
         <p className="text-sm text-center mt-4">
           Already have an account?{" "}
           <Link href="/login">
-            <a className="font-medium text-primary underline underline-offset-1">Login</a>
+            <a className="font-medium text-primary underline underline-offset-1">
+              Login
+            </a>
           </Link>
         </p>
       </div>

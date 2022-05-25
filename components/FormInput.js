@@ -1,20 +1,30 @@
 import { useState } from "react";
 
-const FormInput = ({ type, value, setValue, placeholder }) => {
+const FormInput = ({ type, value, setValue, placeholder, form }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
-    <div>
-      <div className="relative flex items-center bg-gray-100 rounded-lg w-full pl-12 pr-2">
+    <div
+      className={`flex items-center bg-gray-100 rounded-lg ${
+        type === "password" && "pr-0"
+      }`}
+    >
+      <div className="relative w-full pl-12">
         <input
           type={
             passwordVisible ? "text" : type === "password" ? "password" : "text"
           }
           value={value}
+          id={type + form}
           onChange={(e) => setValue(e.target.value)}
-          className="input bg-transparent py-3 px-0 w-full focus:outline-none"
+          className={`input py-3 ${
+            type === "password" ? "pr-2" : "pr-4"
+          } bg-transparent w-full focus:outline-none`}
         />
-        <div className="input-icon absolute top-1/2 -translate-y-1/2 left-2 grid place-items-center w-8 h-8 rounded transition-all">
+        <label
+          htmlFor={type + form}
+          className="input-icon absolute top-1/2 -translate-y-1/2 left-2 grid place-items-center w-8 h-8 rounded transition-all"
+        >
           {type === "name" && (
             <span className="icon w-4 h-4">
               <svg
@@ -62,7 +72,7 @@ const FormInput = ({ type, value, setValue, placeholder }) => {
               </svg>
             </span>
           )}
-        </div>
+        </label>
         <span
           className={`input-placeholder absolute top-1/2 -translate-y-1/2 left-12 text-sm text-gray-400 pointer-events-none transition-all ${
             value !== "" && "left-16 opacity-0"
@@ -70,38 +80,37 @@ const FormInput = ({ type, value, setValue, placeholder }) => {
         >
           {placeholder}
         </span>
-
-        {type === "password" && (
-          <button
-            type="button"
-            onClick={() => setPasswordVisible(!passwordVisible)}
-            className="grid place-items-center w-10 h-10"
-          >
-            <span
-              className={`eye-slash relative icon ${
-                passwordVisible && "eye-slash-visible"
-              }`}
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11.9999 16.3299C9.60992 16.3299 7.66992 14.3899 7.66992 11.9999C7.66992 9.60992 9.60992 7.66992 11.9999 7.66992C14.3899 7.66992 16.3299 9.60992 16.3299 11.9999C16.3299 14.3899 14.3899 16.3299 11.9999 16.3299ZM11.9999 9.16992C10.4399 9.16992 9.16992 10.4399 9.16992 11.9999C9.16992 13.5599 10.4399 14.8299 11.9999 14.8299C13.5599 14.8299 14.8299 13.5599 14.8299 11.9999C14.8299 10.4399 13.5599 9.16992 11.9999 9.16992Z"
-                  fill="#292D32"
-                />
-                <path
-                  d="M12.0001 21.02C8.24008 21.02 4.69008 18.82 2.25008 15C1.19008 13.35 1.19008 10.66 2.25008 8.99998C4.70008 5.17998 8.25008 2.97998 12.0001 2.97998C15.7501 2.97998 19.3001 5.17998 21.7401 8.99998C22.8001 10.65 22.8001 13.34 21.7401 15C19.3001 18.82 15.7501 21.02 12.0001 21.02ZM12.0001 4.47998C8.77008 4.47998 5.68008 6.41998 3.52008 9.80998C2.77008 10.98 2.77008 13.02 3.52008 14.19C5.68008 17.58 8.77008 19.52 12.0001 19.52C15.2301 19.52 18.3201 17.58 20.4801 14.19C21.2301 13.02 21.2301 10.98 20.4801 9.80998C18.3201 6.41998 15.2301 4.47998 12.0001 4.47998Z"
-                  fill="#292D32"
-                />
-              </svg>
-            </span>
-          </button>
-        )}
       </div>
+      {type === "password" && (
+        <button
+          type="button"
+          onClick={() => setPasswordVisible(!passwordVisible)}
+          className="grid place-items-center w-12 h-12"
+        >
+          <span
+            className={`eye-slash relative icon ${
+              passwordVisible && "eye-slash-visible"
+            }`}
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.9999 16.3299C9.60992 16.3299 7.66992 14.3899 7.66992 11.9999C7.66992 9.60992 9.60992 7.66992 11.9999 7.66992C14.3899 7.66992 16.3299 9.60992 16.3299 11.9999C16.3299 14.3899 14.3899 16.3299 11.9999 16.3299ZM11.9999 9.16992C10.4399 9.16992 9.16992 10.4399 9.16992 11.9999C9.16992 13.5599 10.4399 14.8299 11.9999 14.8299C13.5599 14.8299 14.8299 13.5599 14.8299 11.9999C14.8299 10.4399 13.5599 9.16992 11.9999 9.16992Z"
+                fill="#292D32"
+              />
+              <path
+                d="M12.0001 21.02C8.24008 21.02 4.69008 18.82 2.25008 15C1.19008 13.35 1.19008 10.66 2.25008 8.99998C4.70008 5.17998 8.25008 2.97998 12.0001 2.97998C15.7501 2.97998 19.3001 5.17998 21.7401 8.99998C22.8001 10.65 22.8001 13.34 21.7401 15C19.3001 18.82 15.7501 21.02 12.0001 21.02ZM12.0001 4.47998C8.77008 4.47998 5.68008 6.41998 3.52008 9.80998C2.77008 10.98 2.77008 13.02 3.52008 14.19C5.68008 17.58 8.77008 19.52 12.0001 19.52C15.2301 19.52 18.3201 17.58 20.4801 14.19C21.2301 13.02 21.2301 10.98 20.4801 9.80998C18.3201 6.41998 15.2301 4.47998 12.0001 4.47998Z"
+                fill="#292D32"
+              />
+            </svg>
+          </span>
+        </button>
+      )}
     </div>
   );
 };
