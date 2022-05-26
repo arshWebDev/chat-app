@@ -19,6 +19,14 @@ const DarkThemeProvider = ({ children }) => {
       setDarkTheme(false);
       console.log("else");
     }
+  }, []);
+
+  useEffect(() => {
+    if (darkTheme) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
   }, [darkTheme]);
 
   return (
