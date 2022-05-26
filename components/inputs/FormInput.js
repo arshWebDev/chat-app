@@ -8,13 +8,13 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
         error && "md:outline-none outline outline-2 outline-red-500"
       } transition-all duration-300`}
     >
-      <div className="relative flex flex-row-reverse items-center pl-2 gap-2 w-full">
+      <div className="relative flex flex-row-reverse items-center pl-2 w-full">
         <input
           type="text"
           value={value}
           id={type + form}
           onChange={(e) => setValue(e.target.value)}
-          className={`input py-3 pr-4 bg-transparent w-full focus:outline-none`}
+          className={`input py-3 pl-2 pr-4 bg-transparent w-full focus:outline-none`}
         />
         <label
           htmlFor={type + form}

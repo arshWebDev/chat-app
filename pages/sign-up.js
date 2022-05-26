@@ -23,9 +23,13 @@ const SignUp = () => {
   const submitForm = (e) => {
     e.preventDefault();
     const validate = validateSignUpForm(
-      name, setErrorName,
-      email, setErrorEmail, 
-      password, setErrorPassword);
+      name,
+      setErrorName,
+      email,
+      setErrorEmail,
+      password,
+      setErrorPassword
+    );
 
     if (!validate) return;
     setLoading(true);
@@ -99,7 +103,7 @@ const SignUp = () => {
             />
           </div>
 
-          <button className="grid place-items-center w-full py-3 bg-primary rounded-lg mt-10">
+          <button className="grid place-items-center w-full py-3 bg-primary rounded-lg mt-6">
             {loading ? (
               <div className="w-5 h-5 border-t-2 border-l-2 border-white border-solid animate-spin rounded-full"></div>
             ) : (

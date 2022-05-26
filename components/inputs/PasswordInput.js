@@ -1,26 +1,25 @@
 import { useState } from "react";
 
-import { checkPasswordStrength, getPasswordStrengthWords } from "../../utils";
-
 import Error from "./Error";
 import InputPlaceholder from "./InputPlaceholder";
+import PasswordStrength from "../PasswordStrength";
 
 const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
-    <div
-      className={`relative flex items-center bg-gray-100 dark:bg-zinc-800 rounded-lg pr-0${
-        error && "outline outline-2 outline-red-500 md:outline-none"
-      } transition-all duration-300`}
-    >
-      <div className="relative flex flex-row-reverse items-center pl-2 gap-2 w-full">
+    <div className="relative flex flex-col gap-2 pr-0 transition-all duration-300">
+      <div
+        className={`relative flex flex-row-reverse items-center w-full pl-2 bg-gray-100 dark:bg-zinc-800 rounded-lg ${
+          error && "outline outline-2 outline-red-500 md:outline-none"
+        } `}
+      >
         <input
           type={passwordVisible ? "text" : "password"}
           value={value}
           id={type + form}
           onChange={(e) => setValue(e.target.value)}
-          className="input py-3 pr-2 bg-transparent w-full focus:outline-none"
+          className="input py-3 px-2 bg-transparent w-full focus:outline-none"
         />
         <label
           htmlFor={type + form}
@@ -41,12 +40,11 @@ const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
         </label>
 
         <InputPlaceholder value={value} placeholder={placeholder} />
-      </div>
 
-      <button
+        <button
         type="button"
         onClick={() => setPasswordVisible(!passwordVisible)}
-        className="grid place-items-center w-12 h-12 focus:outline-none"
+        className="absolute grid place-items-center w-12 h-12 focus:outline-none"
       >
         <span
           className={`eye-slash relative icon ${
@@ -71,36 +69,14 @@ const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
         </span>
       </button>
 
-      <Error error={error} />
 
-      <div className="absolute -bottom-6 left-0 flex items-center gap-3 w-full">
-        <div className="relative w-full h-1 bg-gray-300 dark:bg-zinc-700 rounded-2xl">
-          <div
-            className={`absolute z-[5] top-0 left-0 h-1 
-            ${
-              checkPasswordStrength(value) === "transparent"
-                ? "bg-transparent w-0"
-                : ""
-            }
-            ${checkPasswordStrength(value) === "1/4" ? "bg-red-500 w-1/4" : ""}
-            ${
-              checkPasswordStrength(value) === "1/2"
-                ? "bg-yellow-400 w-1/2"
-                : ""
-            }
-            ${checkPasswordStrength(value) === "3/4" ? "bg-blue-400 w-3/4" : ""}
-            ${
-              checkPasswordStrength(value) === "full"
-                ? "bg-green-500 w-full"
-                : ""
-            }
-             rounded-2xl transition-all duration-300`}
-          ></div>
-        </div>
-        <div className="min-w-max font-semibold text-sm text-gray-400 dark:text-zinc-600">
-          {getPasswordStrengthWords(value)}
-        </div>
+
+        <Error error={error} />
+
+
       </div>
+
+      <PasswordStrength value={value} />
     </div>
   );
 };
