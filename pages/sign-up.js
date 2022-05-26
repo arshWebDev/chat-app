@@ -20,6 +20,24 @@ const SignUp = () => {
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
 
+  const submitForm = (e) => {
+    e.preventDefault();
+    const validate = validateSignUpForm(
+      name, setErrorName,
+      email, setErrorEmail, 
+      password, setErrorPassword);
+
+    if (!validate) return;
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      router.push({
+        pathname: "/get-started",
+      });
+    }, 2000);
+  };
+
   return (
     <main className="grid place-items-center min-h-screen md:py-20">
       <Head>
@@ -53,30 +71,7 @@ const SignUp = () => {
           OR
         </span>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            const validate = validateSignUpForm(
-              name,
-              setErrorName,
-              email,
-              setErrorEmail,
-              password,
-              setErrorPassword
-            );
-
-            if (!validate) return;
-            setLoading(true);
-
-            setTimeout(() => {
-              setLoading(false);
-              router.push({
-                pathname: "/profile",
-                query: { tab: "details" },
-              });
-            }, 2000);
-          }}
-        >
+        <form onSubmit={submitForm}>
           <div className="flex flex-col gap-4">
             <FormInput
               type="name"
