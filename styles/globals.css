@@ -14,8 +14,20 @@
 
 /* ------------------- */
 
+/* ------------------- */
+/* html */
+
 html {
   font-family: "Libre Franklin", sans-serif;
+}
+
+/* ------------------- */
+
+/* ------------------- */
+/* body */
+
+body {
+  @apply dark:text-white bg-gray-50 dark:bg-zinc-950
 }
 
 /* ------------------- */
@@ -26,13 +38,13 @@ html {
 /* icons */
 
 .icon svg > path {
-  @apply fill-black;
+  @apply fill-black dark:fill-white;
 }
 
 /* form input */
 
 .input:focus ~ .input-icon {
-  @apply -translate-x-3.5 -translate-y-3.5 bg-gray-50 shadow-lg shadow-gray-300;
+  @apply -translate-x-3.5 -translate-y-3.5 bg-gray-50 dark:bg-neutral-800 shadow-lg shadow-gray-300 dark:shadow-zinc-900;
 }
 
 .input:focus ~ .input-placeholder {
@@ -42,7 +54,7 @@ html {
 /* show password */
 
 .eye-slash::before {
-  @apply content-[""] absolute top-0 left-0 w-[120%] h-0.5 bg-black transition-transform origin-right;
+  @apply content-[""] absolute top-0 left-0 w-[120%] h-0.5 bg-black dark:bg-white rounded-xl transition-transform origin-right;
   transform: translate(-5px, 0px) rotate(-45deg) scaleX(0);
 }
 
