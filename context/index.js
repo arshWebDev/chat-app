@@ -1,3 +1,3 @@
-import DarkThemeProvider, { useDarkTheme, DarkThemeContext } from "./DarkThemeContext";
+import DarkModeProvider, { useDarkMode, DarkModeContext } from "./DarkModeContext";
 
-export { DarkThemeProvider, useDarkTheme, DarkThemeContext };
+export { DarkModeProvider, useDarkMode, DarkModeContext };
