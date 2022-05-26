@@ -1,12 +1,12 @@
 import {useContext} from 'react'
-import { DarkThemeProvider } from "../context";
+import { DarkModeProvider } from "../context";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <DarkThemeProvider>
+    <DarkModeProvider>
       <Component {...pageProps} />
-    </DarkThemeProvider>
+    </DarkModeProvider>
   );
 }
 

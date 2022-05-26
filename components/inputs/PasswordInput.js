@@ -10,7 +10,7 @@ const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
 
   return (
     <div
-      className={`relative flex items-center bg-gray-100 rounded-lg pr-0${
+      className={`relative flex items-center bg-gray-100 dark:bg-zinc-800 rounded-lg pr-0${
         error && "outline outline-2 outline-red-500 md:outline-none"
       } transition-all duration-300`}
     >
@@ -74,7 +74,7 @@ const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
       <Error error={error} />
 
       <div className="absolute -bottom-6 left-0 flex items-center gap-3 w-full">
-        <div className="relative w-full h-1 bg-gray-300 rounded-2xl">
+        <div className="relative w-full h-1 bg-gray-300 dark:bg-zinc-700 rounded-2xl">
           <div
             className={`absolute z-[5] top-0 left-0 h-1 
             ${
@@ -97,7 +97,7 @@ const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
              rounded-2xl transition-all duration-300`}
           ></div>
         </div>
-        <div className="min-w-max font-semibold text-sm text-gray-400">
+        <div className="min-w-max font-semibold text-sm text-gray-400 dark:text-zinc-600">
           {getPasswordStrengthWords(value)}
         </div>
       </div>

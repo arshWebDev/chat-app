@@ -4,7 +4,7 @@ import InputPlaceholder from "./InputPlaceholder";
 const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
   return (
     <div
-      className={`relative flex items-center bg-gray-100 rounded-lg ${
+      className={`relative flex items-center bg-gray-100 dark:bg-zinc-800 rounded-lg ${
         error && "md:outline-none outline outline-2 outline-red-500"
       } transition-all duration-300`}
     >
