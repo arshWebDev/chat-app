@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { useRouter } from "next/router";
+
 import Head from "next/head";
 import Link from "next/link";
 
@@ -8,6 +10,8 @@ import { validateSignUpForm } from "../utils";
 import { FormInput, PasswordInput } from "../components/inputs";
 
 const SignUp = () => {
+  const router = useRouter();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +19,8 @@ const SignUp = () => {
   const [errorName, setErrorName] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
+
+  const [loading, setLoading] = useState(false);
 
   return (
     <main className="grid place-items-center min-h-screen md:py-20 bg-gray-50">
@@ -61,8 +67,13 @@ const SignUp = () => {
               setErrorPassword
             );
 
-            if (errorName || errorEmail || errorPassword) return;
-            console.log("hello");
+            if (!validate) return;
+            setLoading(true);
+
+            setTimeout(() => {
+              setLoading(false);
+              router.push("/get-started");
+            }, 2000);
           }}
         >
           <div className="flex flex-col gap-4">
@@ -92,8 +103,12 @@ const SignUp = () => {
             />
           </div>
 
-          <button className="w-full text-white font-semibold py-3 bg-primary rounded-lg mt-10">
-            Create Account
+          <button className="grid place-items-center w-full py-3 bg-primary rounded-lg mt-10">
+            {loading ? (
+              <div className="w-4 h-4 border-t-2 border-white border-solid animate-spin rounded-full"></div>
+            ) : (
+              <span className="text-white font-semibold">Create Account</span>
+            )}
           </button>
         </form>
 

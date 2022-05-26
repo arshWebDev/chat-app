@@ -11,7 +11,7 @@ const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
   return (
     <div
       className={`relative flex items-center bg-gray-100 rounded-lg pr-0${
-        error && "md:outline-none outline outline-2 outline-red-500"
+        error && "outline outline-2 outline-red-500 md:outline-none"
       } transition-all duration-300`}
     >
       <div className="relative flex flex-row-reverse items-center pl-2 gap-2 w-full">
