@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { validateSignUpForm } from "../utils";
 
 import { FormInput, PasswordInput } from "../components/inputs";
+import Footer from "../components/Footer";
 
 const SignUp = () => {
   const router = useRouter();
@@ -43,12 +44,12 @@ const SignUp = () => {
   };
 
   return (
-    <main className="grid place-items-center min-h-screen md:py-20">
+    <main className="flex gap-8 flex-col justify-between items-center min-h-screen pt-20">
       <Head>
         <title>Sign Up - Chaters</title>
       </Head>
 
-      <div className="w-[80%] md:w-[440px] md:py-10 md:px-10 md:bg-white md:dark:bg-zinc-850 rounded-2xl md:shadow-2xl md:shadow-gray-200 md:dark:shadow-none">
+      <div className="w-[80%] md:w-[420px] md:pt-10 md:pb-8 md:px-8 md:bg-white md:dark:bg-zinc-850 rounded-2xl md:shadow-2xl md:shadow-gray-200 md:dark:shadow-none">
         <h1 className="text-3xl text-center font-semibold mb-10">Sign Up</h1>
 
         <button className="flex items-center justify-center gap-2 w-full py-3 px-4 border-2 border-solid border-black dark:border-white rounded-lg">
@@ -71,7 +72,7 @@ const SignUp = () => {
           <span className="font-semibold">Sign in with Google</span>
         </button>
 
-        <span className="block text-lg text-center font-medium text-gray-400 dark:text-neutral-600 my-5">
+        <span className="block text-lg text-center font-medium text-gray-400 dark:text-neutral-600 my-5 selection:bg-transparent">
           OR
         </span>
 
@@ -119,6 +120,8 @@ const SignUp = () => {
           </Link>
         </p>
       </div>
+
+      <Footer />
     </main>
   );
 };

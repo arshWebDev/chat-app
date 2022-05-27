@@ -6,7 +6,7 @@ const FormInput = ({ type, value, setValue, placeholder, form, error }) => {
     <div
       className={`relative flex items-center bg-gray-100 dark:bg-zinc-800 rounded-lg ${
         error && "md:outline-none outline outline-2 outline-red-500"
-      } transition-all duration-300`}
+      }`}
     >
       <div className="relative flex flex-row-reverse items-center pl-2 w-full">
         <input
