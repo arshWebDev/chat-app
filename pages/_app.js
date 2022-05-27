@@ -1,13 +1,13 @@
-import {useContext} from 'react'
-import { DarkModeProvider } from "../context";
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
+import { DarkModeProvider } from "../context";
+
+const MyApp = ({ Component, pageProps }) => {
   return (
     <DarkModeProvider>
       <Component {...pageProps} />
     </DarkModeProvider>
   );
-}
+};
 
 export default MyApp;
