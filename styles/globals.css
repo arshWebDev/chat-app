@@ -27,7 +27,7 @@ html {
 /* body */
 
 body {
-  @apply dark:text-white bg-gray-50 dark:bg-zinc-950
+  @apply dark:text-white bg-gray-50 dark:bg-zinc-950;
 }
 
 /* ------------------- */
@@ -37,7 +37,7 @@ body {
 
 /* icons */
 
-.icon svg > path {
+.icon svg > * {
   @apply fill-black dark:fill-white;
 }
 
@@ -61,6 +61,15 @@ body {
 .eye-slash-visible::before {
   @apply origin-right;
   transform: translate(-5px, 0px) rotate(-45deg) scaleX(1);
+}
+
+/* ------------------- */
+
+/* ------------------- */
+/* focus */
+
+*:focus {
+  @apply outline outline-2 outline-zinc-700 dark:outline-zinc-300 rounded-md;
 }
 
 /* ------------------- */
