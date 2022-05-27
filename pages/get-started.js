@@ -23,7 +23,7 @@ const GetStarted = () => {
         <div className="flex w-[85%] md:w-[450px] justify-evenly rounded-xl bg-white dark:bg-zinc-850 shadow-2xl dark:shadow-none shadow-gray-200 overflow-hidden">
           <button
             onClick={(e) => setTab("details")}
-            className={`w-max py-3 px-2 ${
+            className={`w-max pt-4 pb-3.5 px-3 ${
               tab === "details"
                 ? "font-semibold border-b-2 border-solid border-primary"
                 : "font-medium text-gray-500 dark:text-zinc-600 bg-transparent"
@@ -33,7 +33,7 @@ const GetStarted = () => {
           </button>
           <button
             onClick={(e) => setTab("profile-pic")}
-            className={`w-max py-3 px-2 ${
+            className={`w-max pt-4 pb-3.5 px-3 ${
               tab === "profile-pic"
                 ? "font-semibold border-b-2 border-solid border-primary"
                 : "font-medium text-gray-500 dark:text-zinc-600 bg-transparent"
@@ -43,7 +43,7 @@ const GetStarted = () => {
           </button>
           <button
             onClick={(e) => setTab("chats")}
-            className={`w-max py-3 px-2 ${
+            className={`w-max pt-4 pb-3.5 px-3 ${
               tab === "chats"
                 ? "font-semibold border-b-2 border-solid border-primary"
                 : "font-medium text-gray-500 dark:text-zinc-600 bg-transparent"
