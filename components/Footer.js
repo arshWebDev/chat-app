@@ -4,7 +4,7 @@ import { useDarkMode } from "../context";
 const Footer = () => {
   const { darkMode, setDarkMode } = useDarkMode();
   return (
-    <footer className="flex flex-col gap-4 justify-between md:items-center w-full py-10 px-5 xl:px-10 2xl:px-20">
+    <footer className="flex flex-col md:flex-row gap-4 justify-between md:items-center w-full py-10 px-5 xl:px-10 2xl:px-20">
       <p className="text-xl font-medium">Chaters</p>
 
       <button

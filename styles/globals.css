@@ -41,6 +41,10 @@ body {
   @apply fill-black dark:fill-white;
 }
 
+.icon-stroke svg > * {
+  @apply stroke-black dark:stroke-white fill-transparent
+}
+
 /* form input */
 
 .input:focus ~ .input-icon {

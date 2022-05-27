@@ -2,15 +2,14 @@ import { useState } from "react";
 
 import Head from "next/head";
 
-import Footer from '../components/Footer';
+import Footer from "../components/Footer";
 import { Details } from "../components/get-started";
 
 const GetStarted = () => {
   const [tab, setTab] = useState("details");
 
-  const changeTab = (e) => {
-    setTab(e.target.getAttribute("aria-label"));
-  };
+  const [name, setName] = useState("");
+  const [about, setAbout] = useState("");
 
   return (
     <main className="min-h-screen flex flex-col gap-6 items-center justify-between pt-28">
@@ -49,7 +48,15 @@ const GetStarted = () => {
           </button>
         </div>
 
-        {/* {tab === "details" && <Details />} */}
+        {tab === "details" && (
+          <Details
+            name={name}
+            setName={setName}
+            about={about}
+            setAbout={setAbout}
+            setTab={setTab}
+          />
+        )}
       </section>
       <Footer />
     </main>
