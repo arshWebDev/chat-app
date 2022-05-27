@@ -1,3 +1,4 @@
 import Details from "./Details";
+import ProfilePic from "./ProfilePic";
 
-export { Details };
+export { Details, ProfilePic };

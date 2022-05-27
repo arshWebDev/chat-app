@@ -3,13 +3,15 @@ import { useState } from "react";
 import Head from "next/head";
 
 import Footer from "../components/Footer";
-import { Details } from "../components/get-started";
+import { Details, ProfilePic } from "../components/get-started";
 
 const GetStarted = () => {
   const [tab, setTab] = useState("details");
 
   const [name, setName] = useState("");
   const [about, setAbout] = useState("");
+
+  const [pic, setPic] = useState(null);
 
   return (
     <main className="min-h-screen flex flex-col gap-8 items-center justify-between pt-16 md:pt-20">
@@ -59,6 +61,10 @@ const GetStarted = () => {
             setAbout={setAbout}
             setTab={setTab}
           />
+        )}
+
+        {tab === "profile-pic" && (
+          <ProfilePic pic={pic} setPic={setPic} setTab={setTab} />
         )}
       </section>
       <Footer />

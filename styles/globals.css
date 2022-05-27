@@ -67,6 +67,16 @@ body {
   transform: translate(-5px, 0px) rotate(-45deg) scaleX(1);
 }
 
+/* filepond */
+
+.filepond--panel-root {
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+.dark .filepond--panel-root {
+  background-color: rgb(45 45 48 / var(--tw-bg-opacity));
+}
+
 /* ------------------- */
 
 /* ------------------- */
