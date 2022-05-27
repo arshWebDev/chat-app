@@ -15,7 +15,7 @@ const PicUpload = ({ pic, setPic }) => {
       files={pic}
       allowMultiple={false}
       onupdatefiles={setPic}
-      labelIdle={`<div class="text-gray-700 dark:text-zinc-400">Drag & Drop your files or <span class="text-primary font-semibold">Browse</span></div>`}
+      labelIdle={`<p class="text-gray-700 dark:text-zinc-400 font-medium">Drag & Drop your files or <span class="text-primary font-semibold">Browse</span></p>`}
     />
   );
 };

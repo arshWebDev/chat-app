@@ -67,6 +67,7 @@ const GetStarted = () => {
           <ProfilePic pic={pic} setPic={setPic} setTab={setTab} />
         )}
       </section>
+
       <Footer />
     </main>
   );
