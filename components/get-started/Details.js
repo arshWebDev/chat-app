@@ -10,11 +10,11 @@ const Details = ({ name, setName, about, setAbout, setTab }) => {
 
     if (name.replaceAll(" ", "").length === 0) {
       setErrorName("Please enter a name");
-      return
+      return;
     }
 
     setErrorName(false);
-    setTab("profile-pic")
+    setTab("profile-pic");
   };
 
   return (
@@ -56,7 +56,7 @@ const Details = ({ name, setName, about, setAbout, setTab }) => {
             ></textarea>
           </div>
         </div>
- 
+
         <div className="flex justify-end mt-6">
           <button className="flex items-center gap-0 py-2 px-4 bg-primary rounded-md">
             <span>Next</span>

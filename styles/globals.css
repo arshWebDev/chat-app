@@ -42,7 +42,7 @@ body {
 }
 
 .icon-stroke svg > * {
-  @apply stroke-black dark:stroke-white fill-transparent
+  @apply stroke-black dark:stroke-white fill-transparent;
 }
 
 /* form input */
@@ -74,6 +74,20 @@ body {
 
 *:focus {
   @apply outline outline-2 outline-zinc-700 dark:outline-zinc-300 rounded-md;
+}
+
+/* ------------------- */
+
+/* ------------------- */
+/* scrollbar */
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-zinc-700 rounded-lg;
 }
 
 /* ------------------- */
