@@ -12,36 +12,39 @@ const GetStarted = () => {
   const [about, setAbout] = useState("");
 
   return (
-    <main className="min-h-screen flex flex-col gap-6 items-center justify-between pt-28">
+    <main className="min-h-screen flex flex-col gap-8 items-center justify-between pt-16 md:pt-20">
       <Head>
         <title>Get Started - Chaters</title>
       </Head>
 
       <section className="w-full h-full flex flex-col gap-10 items-center justify-center">
-        <div className="flex w-[85%] md:w-[450px] justify-evenly rounded-xl bg-gray-200 dark:bg-zinc-850 overflow-hidden">
+        <div className="flex w-[85%] md:w-[450px] justify-evenly rounded-xl bg-white dark:bg-zinc-850 shadow-2xl dark:shadow-none shadow-gray-200 overflow-hidden">
           <button
+          onClick={(e) => setTab("details")}
             className={`w-max py-3 px-2 ${
               tab === "details"
-                ? "border-b-2 border-solid border-primary"
-                : "bg-transparent"
+                ? "font-semibold border-b-2 border-solid border-primary"
+                : "font-medium text-gray-500 dark:text-zinc-600 bg-transparent"
             } focus:outline-none focus:rounded-none focus:border-b-2 focus:border-solid focus:border-primary`}
           >
             Details
           </button>
           <button
+          onClick={(e) => setTab("profile-pic")}
             className={`w-max py-3 px-2 ${
               tab === "profile-pic"
-                ? "border-b-2 border-solid border-primary"
-                : "bg-transparent"
+                ? "font-semibold border-b-2 border-solid border-primary"
+                : "font-medium text-gray-500 dark:text-zinc-600 bg-transparent"
             } focus:outline-none focus:rounded-none focus:border-b-2 focus:border-solid focus:border-primary`}
           >
             Profile Pic
           </button>
           <button
+          onClick={(e) => setTab("chats")}
             className={`w-max py-3 px-2 ${
               tab === "chats"
-                ? "border-b-2 border-solid border-primary"
-                : "bg-transparent"
+                ? "font-semibold border-b-2 border-solid border-primary"
+                : "font-medium text-gray-500 dark:text-zinc-600 bg-transparent"
             } focus:outline-none focus:rounded-none focus:border-b-2 focus:border-solid focus:border-primary`}
           >
             Chats
