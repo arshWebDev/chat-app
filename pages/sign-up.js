@@ -13,19 +13,19 @@ const SignUp = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const [name, setName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [errorName, setErrorName] = useState(false);
+  const [errorUsername, setErrorUsername] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
 
   const submitForm = (e) => {
     e.preventDefault();
     const validate = validateSignUpForm(
-      name,
-      setErrorName,
+      username,
+      setErrorUsername,
       email,
       setErrorEmail,
       password,
@@ -79,12 +79,12 @@ const SignUp = () => {
         <form onSubmit={submitForm}>
           <div className="flex flex-col gap-4">
             <FormInput
-              type="name"
-              value={name}
-              setValue={setName}
+              type="username"
+              value={username}
+              setValue={setUserName}
               placeholder="Username"
               form="sign-up"
-              error={errorName}
+              error={errorUsername}
             />
             <FormInput
               type="email"

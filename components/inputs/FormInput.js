@@ -35,7 +35,7 @@ const FormInput = ({
             htmlFor={type + form}
             className="input-icon grid place-items-center w-10 h-8 rounded transition-all"
           >
-            {type === "name" && (
+            {type === "username" && (
               <span className="icon w-4 h-4">
                 <svg
                   width="16"
