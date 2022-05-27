@@ -1,7 +1,9 @@
 import { useState } from "react";
 
 import Head from "next/head";
-import { Details } from "../components/profile";
+
+import Footer from '../components/Footer';
+import { Details } from "../components/get-started";
 
 const GetStarted = () => {
   const [tab, setTab] = useState("details");
@@ -11,63 +13,45 @@ const GetStarted = () => {
   };
 
   return (
-    <main className="min-h-screen flex flex-col gap-6 items-center justify-center">
+    <main className="min-h-screen flex flex-col gap-6 items-center justify-between pt-28">
       <Head>
         <title>Get Started - Chaters</title>
       </Head>
 
-      <div className="flex justify-between w-[85%]">
-        <button
-          aria-label="details"
-          onClick={changeTab}
-          className={`flex gap-3 items-center py-1 ${tab === "details" ? "px-4 bg-gray-300 dark:bg-neutral-800 dark:bg-none rounded-full" : "px-1"}`}
-        >
-          <div
-            className={`hidden md:grid place-items-center w-7 h-7 text-sm ${
+      <section className="w-full h-full flex flex-col gap-10 items-center justify-center">
+        <div className="flex w-[85%] md:w-[450px] justify-evenly rounded-xl bg-gray-200 dark:bg-zinc-850 overflow-hidden">
+          <button
+            className={`w-max py-3 px-2 ${
               tab === "details"
-                ? "text-white dark:text-black bg-black dark:bg-white"
-                : ""
-            } border-2 border-solid border-black dark:border-white rounded-full pointer-events-none`}
+                ? "border-b-2 border-solid border-primary"
+                : "bg-transparent"
+            } focus:outline-none focus:rounded-none focus:border-b-2 focus:border-solid focus:border-primary`}
           >
-            1
-          </div>
-          Details
-        </button>
-        <button
-          aria-label="profile-pic"
-          onClick={changeTab}
-          className={`flex gap-3 items-center py-1 ${tab === "profile-pic" ? "px-4 bg-gray-300 dark:bg-neutral-800 dark:bg-none rounded-full" : "px-1"}`}
-        >
-          <div
-            className={`hidden md:grid place-items-center w-7 h-7 text-sm ${
+            Details
+          </button>
+          <button
+            className={`w-max py-3 px-2 ${
               tab === "profile-pic"
-                ? "text-white dark:text-black bg-black dark:bg-white"
-                : ""
-            } border-2 border-solid border-black dark:border-white rounded-full pointer-events-none`}
+                ? "border-b-2 border-solid border-primary"
+                : "bg-transparent"
+            } focus:outline-none focus:rounded-none focus:border-b-2 focus:border-solid focus:border-primary`}
           >
-            2
-          </div>
-          Profile Pic
-        </button>
-        <button
-          aria-label="chats"
-          onClick={changeTab}
-          className={`flex gap-3 items-center py-1 ${tab === "add-chats" ? "px-4 bg-gray-300 dark:bg-neutral-800 dark:bg-none rounded-full" : "px-1"}`}
-        >
-          <div
-            className={`hidden md:grid place-items-center w-7 h-7 text-sm ${
-              tab === "add-chats"
-                ? "text-white dark:text-black bg-black dark:bg-white"
-                : ""
-            } border-2 border-solid border-black dark:border-white rounded-full pointer-events-none`}
+            Profile Pic
+          </button>
+          <button
+            className={`w-max py-3 px-2 ${
+              tab === "chats"
+                ? "border-b-2 border-solid border-primary"
+                : "bg-transparent"
+            } focus:outline-none focus:rounded-none focus:border-b-2 focus:border-solid focus:border-primary`}
           >
-            3
-          </div>
-          Chats
-        </button>
-      </div>
+            Chats
+          </button>
+        </div>
 
-      {tab === "details" && <Details />}
+        {/* {tab === "details" && <Details />} */}
+      </section>
+      <Footer />
     </main>
   );
 };
