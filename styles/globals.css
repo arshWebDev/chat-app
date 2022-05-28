@@ -45,6 +45,10 @@ body {
   @apply stroke-black dark:stroke-white fill-transparent;
 }
 
+.icon-stroke-white svg > * {
+  @apply stroke-white fill-transparent
+}
+
 /* form input */
 
 .input:focus ~ .input-icon {
@@ -75,6 +79,12 @@ body {
 
 .dark .filepond--panel-root {
   background-color: rgb(45 45 48 / var(--tw-bg-opacity));
+}
+
+/* buttons */
+
+.btn-primary {
+  @apply flex items-center justify-center gap-1 text-white bg-primary;
 }
 
 /* ------------------- */
