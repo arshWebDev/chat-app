@@ -3,7 +3,7 @@ import { useState } from "react";
 import Head from "next/head";
 
 import Footer from "../components/Footer";
-import { Details, ProfilePic } from "../components/get-started";
+import { Chats, Details, ProfilePic } from "../components/get-started";
 
 const GetStarted = () => {
   const [tab, setTab] = useState("details");
@@ -19,7 +19,7 @@ const GetStarted = () => {
         <title>Get Started - Chaters</title>
       </Head>
 
-      <section className="w-full h-full flex flex-col gap-10 items-center justify-center">
+      <section className="w-full h-full flex flex-col gap-6 items-center justify-center">
         <div className="flex w-[85%] md:w-[450px] justify-evenly rounded-xl bg-white dark:bg-zinc-850 shadow-2xl dark:shadow-none shadow-gray-200 overflow-hidden">
           <button
             onClick={(e) => setTab("details")}
@@ -65,6 +65,10 @@ const GetStarted = () => {
 
         {tab === "profile-pic" && (
           <ProfilePic pic={pic} setPic={setPic} setTab={setTab} />
+        )}
+
+        {tab === "chats" && (
+          <Chats setTab={setTab} />
         )}
       </section>
 

@@ -49,7 +49,7 @@ const PasswordStrength = ({ value }) => {
           className={`absolute z-[5] top-0 left-0 h-1 ${styles} rounded-2xl transition-all duration-300`}
         ></div>
       </div>
-      <div className="min-w-max font-semibold text-sm text-gray-400 dark:text-zinc-600">
+      <div className="min-w-max font-semibold text-sm text-gray-400 dark:text-zinc-600 selection:bg-none">
         {passwordWords}
       </div>
     </div>

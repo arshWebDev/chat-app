@@ -84,7 +84,7 @@ body {
 /* buttons */
 
 .btn-primary {
-  @apply flex items-center justify-center gap-1 text-white bg-primary;
+  @apply flex items-center justify-center gap-1 text-white font-medium bg-primary;
 }
 
 /* ------------------- */

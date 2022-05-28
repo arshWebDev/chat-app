@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { useDarkMode } from "../context";
 
@@ -5,7 +6,9 @@ const Footer = () => {
   const { darkMode, setDarkMode } = useDarkMode();
   return (
     <footer className="flex flex-col md:flex-row gap-4 justify-between md:items-center w-full py-10 px-8 lg:px-20 2xl:px-28">
-      <p className="text-xl font-medium">Chaters</p>
+      <Link href="/">
+        <a className="text-xl font-medium">Chaters</a>
+      </Link>
 
       <button
         onClick={() => setDarkMode(!darkMode)}

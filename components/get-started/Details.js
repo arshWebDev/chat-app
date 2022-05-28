@@ -18,7 +18,7 @@ const Details = ({ name, setName, about, setAbout, setTab }) => {
   };
 
   return (
-    <div className="w-[85%] md:w-[450px] py-2 md:pt-8 md:pb-6 px-5 md:px-8 bg-white dark:bg-zinc-850 rounded-2xl shadow-xl shadow-gray-200 dark:shadow-none">
+    <div className="w-[85%] md:w-[450px] py-6 md:pt-8 md:pb-6 px-5 md:px-8 bg-white dark:bg-zinc-850 rounded-2xl shadow-xl shadow-gray-200 dark:shadow-none">
       <form onSubmit={submitDetails}>
         <div className="flex flex-col gap-4">
           <div>
@@ -52,7 +52,7 @@ const Details = ({ name, setName, about, setAbout, setTab }) => {
               placeholder="About"
               value={about}
               onChange={(e) => setAbout(e.target.value)}
-              className="w-full h-40 py-3 px-4 bg-gray-100 dark:bg-zinc-800 rounded-lg placeholder-gray-300 dark:placeholder-zinc-500 resize-none focus:outline-none"
+              className="w-full h-40 py-3 px-4 bg-gray-100 dark:bg-zinc-800 rounded-lg placeholder-gray-400 dark:placeholder-zinc-500 resize-none focus:outline-none"
             ></textarea>
           </div>
         </div>
