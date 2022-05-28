@@ -10,7 +10,7 @@ const ProfilePic = ({ pic, setPic, setTab }) => {
       <div className="flex justify-between items-center mt-10">
         <button
           onClick={() => setTab("details")}
-          className="flex items-center gap-1 py-2 px-4 bg-primary rounded-md"
+          className="flex items-center gap-1 py-2 px-4 rounded-md"
         >
           <span className="icon-stroke w-5 h-5">
             <svg
@@ -34,10 +34,10 @@ const ProfilePic = ({ pic, setPic, setTab }) => {
 
         <button
           onClick={() => setTab("chats")}
-          className="flex items-center gap-1 py-2 px-4 bg-primary rounded-md"
+          className="btn-primary py-2 px-4 rounded-md"
         >
-          <span className="pt-0.5 font-semibold">Next</span>
-          <span className="icon-stroke w-5 h-5">
+          <span className="font-semibold text-white pt-0.5">Next</span>
+          <span className="icon-stroke-white w-5 h-5">
             <svg
               width="20"
               height="20"
