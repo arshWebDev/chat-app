@@ -1,6 +1,6 @@
 const AccountButtons = ({ form }) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 mt-6">
       <button className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gray-100 dark:bg-zinc-800 rounded-lg">
         <span className="icon">
           <svg

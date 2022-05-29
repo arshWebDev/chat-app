@@ -47,11 +47,22 @@ const Login = () => {
       </Head>
 
       <div className="w-[80%] sm:w-[450px] md:pt-10 md:pb-8 md:px-8 md:bg-white md:dark:bg-zinc-850 rounded-2xl md:shadow-2xl md:shadow-gray-200 md:dark:shadow-none">
-        <div className="text-center mb-8">
+        <div className="text-center">
           <h1 className="text-3xl font-semibold mb-3">Welcome Back</h1>
-          <p className="font-normal">
-            Reconnect with your friends and family members
+          <p className="font-normal px-5">
+            Login into your account and reconnect with your friends and family
+            members
           </p>
+        </div>
+
+        <AccountButtons form="login" />
+
+        <div className="flex items-center justify-center gap-2 my-6 selection:bg-transparent">
+          <span className="block w-4 h-0.5 bg-gray-800 dark:bg-zinc-100 rounded-lg"></span>
+          <span className="text-sm font-semibold tebg-gray-800 dark:tebg-zinc-100">
+            OR
+          </span>
+          <span className="block w-4 h-0.5 bg-gray-800 dark:bg-zinc-100 rounded-lg"></span>
         </div>
 
         <form onSubmit={(e) => e.preventDefault()}>
@@ -92,18 +103,8 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="flex items-center justify-center gap-2 my-7 selection:bg-transparent">
-          <span className="block w-4 h-0.5 bg-gray-800 dark:bg-zinc-100 rounded-lg"></span>
-          <span className="text-sm font-semibold tebg-gray-800 dark:tebg-zinc-100">
-            Or Login with
-          </span>
-          <span className="block w-4 h-0.5 bg-gray-800 dark:bg-zinc-100 rounded-lg"></span>
-        </div>
-
-        <AccountButtons form="login" />
-
         <p className="text-sm text-center font-medium mt-5">
-          New to chaters?{" "}
+          New to Chaters?{" "}
           <Link href="/sign-up">
             <a className="font-semibold text-primary">Sign Up</a>
           </Link>
