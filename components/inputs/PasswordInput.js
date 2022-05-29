@@ -8,7 +8,7 @@ const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   return (
-    <div className="relative flex flex-col gap-2 pr-0 transition-all duration-300">
+    <div className="relative flex flex-col gap-2 w-full pr-0 transition-all duration-300">
       <div
         className={`relative flex flex-row-reverse items-center w-full pl-2 bg-gray-100 dark:bg-zinc-800 rounded-lg ${
           error && "outline outline-2 outline-red-500 md:outline-none"
@@ -72,7 +72,7 @@ const PasswordInput = ({ type, value, setValue, placeholder, form, error }) => {
         <Error error={error} />
       </div>
 
-      <PasswordStrength value={value} />
+      {form !== "login" && <PasswordStrength value={value} />}
     </div>
   );
 };
