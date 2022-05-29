@@ -14,28 +14,32 @@ const PasswordStrength = ({ value }) => {
       setStyles("bg-red-500 w-1/4");
       setPasswordWords("Too Weak");
     } else if (
-      (lowerCaseLetters.test(value) && upperCaseLetters.test(value) && !numbers.test(value) && !specialCharacters.test(value)) 
-      ||
+      (lowerCaseLetters.test(value) &&
+        upperCaseLetters.test(value) &&
+        !numbers.test(value) &&
+        !specialCharacters.test(value)) ||
       (value.length > 6 && value.length <= 8)
     ) {
       setStyles("bg-yellow-400 w-1/2");
       setPasswordWords("Good");
-    
     } else if (
-      (lowerCaseLetters.test(value) && upperCaseLetters.test(value) && numbers.test(value) && !specialCharacters.test(value))
-      ||
+      (lowerCaseLetters.test(value) &&
+        upperCaseLetters.test(value) &&
+        numbers.test(value) &&
+        !specialCharacters.test(value)) ||
       (value.length > 8 && value.length <= 12)
     ) {
       setStyles("bg-blue-500 w-3/4");
       setPasswordWords("Strong");
-    
     } else if (
-      (lowerCaseLetters.test(value) && upperCaseLetters.test(value) && numbers.test(value) && specialCharacters.test(value))
-      || value.length > 12
+      (lowerCaseLetters.test(value) &&
+        upperCaseLetters.test(value) &&
+        numbers.test(value) &&
+        specialCharacters.test(value)) ||
+      value.length > 12
     ) {
       setStyles("bg-green-500 w-full");
       setPasswordWords("Strongest");
-    
     } else {
       setStyles("bg-transparent w-0");
       setPasswordWords("No Password");
@@ -43,7 +47,11 @@ const PasswordStrength = ({ value }) => {
   }, [value]);
 
   return (
-    <div className="flex items-center gap-3 w-full">
+    <div
+      className={`${
+        value !== "" ? "opacity-100" : "opacity-0"
+      } flex items-center gap-3 w-full transition-all duration-200 pointer-events-none`}
+    >
       <div className="relative w-full h-1 bg-gray-300 dark:bg-zinc-700 rounded-2xl">
         <div
           className={`absolute z-[5] top-0 left-0 h-1 ${styles} rounded-2xl transition-all duration-300`}
