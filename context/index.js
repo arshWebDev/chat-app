@@ -1,3 +1,6 @@
-import DarkModeProvider, { useDarkMode, DarkModeContext } from "./DarkModeContext";
+import ContextContainer from "./ContextContainer";
 
-export { DarkModeProvider, useDarkMode, DarkModeContext };
+export default ContextContainer;
+
+export { useDarkMode } from "./DarkModeContext";
+export {useAuth} from './AuthContext';

@@ -1,12 +1,15 @@
 import "../styles/globals.css";
 
-import { DarkModeProvider } from "../context";
+import ContextContainer from "../context";
 
 const MyApp = ({ Component, pageProps }) => {
+
+  // console.log(API_KEY);
+
   return (
-    <DarkModeProvider>
+    <ContextContainer>
       <Component {...pageProps} />
-    </DarkModeProvider>
+    </ContextContainer>
   );
 };
 
