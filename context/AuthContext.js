@@ -19,6 +19,8 @@ const AuthProvider = ({ children }) => {
       );
       console.log(userCred);
 
+      
+
       return true;
     } catch (error) {
       console.log(error.message);

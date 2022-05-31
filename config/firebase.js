@@ -1,4 +1,6 @@
 import { initializeApp } from "firebase/app";
+
+import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -10,7 +12,9 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+initializeApp(firebaseConfig);
 
-export { auth };
+const db = getFirestore();
+const auth = getAuth();
+
+export { db, auth };
