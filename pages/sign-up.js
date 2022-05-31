@@ -12,7 +12,7 @@ import AccountButtons from "../components/AccountButtons";
 import { useAuth } from "../context";
 
 const SignUp = () => {
-  const { signUp } = useAuth();
+  const { signUp, logout } = useAuth();
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);

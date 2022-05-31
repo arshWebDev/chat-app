@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { auth, db } from "../config/firebase";
 
 const AuthContext = createContext(null);
 
@@ -17,9 +17,17 @@ const AuthProvider = ({ children }) => {
         email,
         password
       );
-      console.log(userCred);
 
-      
+      console.log(userCred.user.uid);
+
+      db.collection("users").doc(userCred.user.uid).set({
+        username: username,
+        name: "",
+        email: email,
+        about: "",
+        profilePic: "",
+        chats: {},
+      });
 
       return true;
     } catch (error) {
