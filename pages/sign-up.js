@@ -9,8 +9,11 @@ import { validateSignUpForm } from "../utils";
 import { FormInput, PasswordInput } from "../components/inputs";
 import Footer from "../components/Footer";
 import AccountButtons from "../components/AccountButtons";
+import { useAuth } from "../context";
 
 const SignUp = () => {
+  const { signUp } = useAuth();
+
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +25,7 @@ const SignUp = () => {
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
 
-  const submitForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
     const validate = validateSignUpForm(
       username,
@@ -36,12 +39,14 @@ const SignUp = () => {
     if (!validate) return;
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      router.push({
-        pathname: "/get-started",
-      });
-    }, 2000);
+    const userState = await signUp(username, email, password, setErrorEmail);
+    setLoading(false);
+
+    if (userState) {
+      // router.push({
+      //   pathname: "/get-started",
+      // });
+    }
   };
 
   return (
