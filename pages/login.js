@@ -7,8 +7,13 @@ import { useRouter } from "next/router";
 import { FormInput, PasswordInput } from "../components/inputs";
 import Footer from "../components/Footer";
 import AccountButtons from "../components/AccountButtons";
+import { useAuth } from "../context";
 
 const Login = () => {
+  const { login, logout } = useAuth();
+
+  logout();
+
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -18,27 +23,24 @@ const Login = () => {
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
 
-  // const submitForm = (e) => {
-  //   e.preventDefault();
-  //   const validate = validateSignUpForm(
-  //     username,
-  //     setErrorUsername,
-  //     email,
-  //     setErrorEmail,
-  //     password,
-  //     setErrorPassword
-  //   );
+  const submitForm = async (e) => {
+    e.preventDefault();
 
-  //   if (!validate) return;
-  //   setLoading(true);
+    setLoading(true);
+    const loginSuccessful = await login(
+      email,
+      password,
+      setErrorEmail,
+      setErrorPassword
+    );
+    setLoading(false);
 
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //     router.push({
-  //       pathname: "/get-started",
-  //     });
-  //   }, 2000);
-  // };
+    if (!loginSuccessful) return;
+
+    router.push({
+      pathname: "/app",
+    });
+  };
 
   return (
     <main className="flex gap-8 flex-col justify-center md:justify-between items-center min-h-screen md:pt-20">
@@ -65,7 +67,7 @@ const Login = () => {
           <span className="block w-4 h-0.5 bg-gray-800 dark:bg-zinc-100 rounded-lg"></span>
         </div>
 
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={submitForm}>
           <div className="flex flex-col gap-4">
             <FormInput
               type="email"
@@ -94,7 +96,7 @@ const Login = () => {
             </div>
           </div>
 
-          <button className="btn-primary w-full py-3 rounded-lg mt-6">
+          <button className="btn-primary w-full h-12 py-3 rounded-lg mt-6">
             {loading ? (
               <div className="w-5 h-5 border-t-2 border-l-2 border-white border-solid animate-spin rounded-full"></div>
             ) : (

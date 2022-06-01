@@ -12,9 +12,7 @@ import AccountButtons from "../components/AccountButtons";
 import { useAuth } from "../context";
 
 const SignUp = () => {
-  const { signUp, logout } = useAuth();
-
-  logout();
+  const { signUp } = useAuth();
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -41,14 +39,18 @@ const SignUp = () => {
     if (!validate) return;
     setLoading(true);
 
-    const userState = await signUp(username, email, password, setErrorEmail);
+    const signUpSuccessful = await signUp(
+      username,
+      email,
+      password,
+      setErrorEmail
+    );
     setLoading(false);
 
-    if (userState) {
-      // router.push({
-      //   pathname: "/get-started",
-      // });
-    }
+    if (!signUpSuccessful) return;
+    router.push({
+      pathname: "/get-started",
+    });
   };
 
   return (
@@ -103,7 +105,7 @@ const SignUp = () => {
             />
           </div>
 
-          <button className="btn-primary w-full py-3 rounded-lg mt-4">
+          <button className="btn-primary w-full h-12 py-3 rounded-lg mt-4">
             {loading ? (
               <div className="w-5 h-5 border-t-2 border-l-2 border-white border-solid animate-spin rounded-full"></div>
             ) : (
