@@ -1,7 +1,8 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth, db } from "../config/firebase";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 const AuthContext = createContext(null);
 
@@ -18,9 +19,8 @@ const AuthProvider = ({ children }) => {
         password
       );
 
-      console.log(userCred.user.uid);
-
-      db.collection("users").doc(userCred.user.uid).set({
+      await setDoc(doc(db, "users", userCred.user.uid), {
+        uid: userCred.user.uid,
         username: username,
         name: "",
         email: email,
@@ -31,8 +31,6 @@ const AuthProvider = ({ children }) => {
 
       return true;
     } catch (error) {
-      console.log(error.message);
-
       if (error.message.includes("email")) {
         setErrorEmail("Email already in use");
       }

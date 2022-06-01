@@ -14,6 +14,8 @@ import { useAuth } from "../context";
 const SignUp = () => {
   const { signUp, logout } = useAuth();
 
+  logout();
+
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
