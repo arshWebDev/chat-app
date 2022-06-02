@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { useAuth } from "../context";
+
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -8,11 +10,12 @@ import { validateSignUpForm } from "../utils";
 
 import { FormInput, PasswordInput } from "../components/inputs";
 import Footer from "../components/Footer";
-import AccountButtons from "../components/AccountButtons";
-import { useAuth } from "../context";
+import AuthButtons from "../components/AuthButtons";
 
 const SignUp = () => {
-  const { signUp } = useAuth();
+  const { signUp , logout} = useAuth();
+
+  logout();
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -67,7 +70,7 @@ const SignUp = () => {
           </p>
         </div>
 
-        <AccountButtons form="sign-up" />
+        <AuthButtons form="sign-up" />
 
         <div className="flex items-center justify-center gap-2 my-6 selection:bg-transparent">
           <span className="block w-4 h-0.5 bg-gray-800 dark:bg-zinc-100 rounded-lg"></span>

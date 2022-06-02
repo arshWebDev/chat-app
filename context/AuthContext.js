@@ -4,7 +4,11 @@ import { auth, db } from "../config/firebase";
 
 import {
   createUserWithEmailAndPassword,
+  getRedirectResult,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  signInWithRedirect,
   signOut,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
@@ -71,13 +75,26 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const googleAuth = async (form) => {
+    console.log(form);
+    const provider = new GoogleAuthProvider();
+
+    try {
+      const userCred = await signInWithPopup(auth, provider);
+
+      console.log(userCred);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const logout = async () => {
     await signOut(auth);
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, signUp, login, logout }}>
+    <AuthContext.Provider value={{ user, signUp, login, logout, googleAuth }}>
       {children}
     </AuthContext.Provider>
   );

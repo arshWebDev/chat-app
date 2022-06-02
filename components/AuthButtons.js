@@ -1,7 +1,11 @@
-const AccountButtons = ({ form }) => {
+import { useAuth } from "../context";
+
+const AuthButtons = ({ form }) => {
+  const { googleAuth } = useAuth();
+
   return (
     <div className="flex items-center gap-2 mt-6">
-      <button className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gray-100 dark:bg-zinc-800 rounded-lg">
+      <button onClick={() => googleAuth(form)} className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gray-100 dark:bg-zinc-800 rounded-lg">
         <span className="icon">
           <svg
             width="22"
@@ -39,4 +43,4 @@ const AccountButtons = ({ form }) => {
   );
 };
 
-export default AccountButtons;
+export default AuthButtons;
