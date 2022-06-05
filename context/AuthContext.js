@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 import { auth, db } from "../config/firebase";
 
@@ -76,16 +76,8 @@ const AuthProvider = ({ children }) => {
   };
 
   const googleAuth = async (form) => {
-    console.log(form);
     const provider = new GoogleAuthProvider();
-
-    try {
-      const userCred = await signInWithPopup(auth, provider);
-
-      console.log(userCred);
-    } catch (error) {
-      console.log(error);
-    }
+    signInWithRedirect(auth, provider);
   };
 
   const logout = async () => {

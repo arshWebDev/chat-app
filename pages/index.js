@@ -6,7 +6,6 @@ import { auth } from "../config/firebase";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-
 const Home = () => {
   const router = useRouter();
 
@@ -16,7 +15,6 @@ const Home = () => {
         router.push("/sign-up");
       }
     });
-
     // eslint-disable-next-line
   }, []);
 
