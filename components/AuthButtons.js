@@ -2,18 +2,17 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../context";
 
 import { auth } from "../config/firebase";
-import { GoogleAuthProvider, getRedirectResult } from "firebase/auth";
+import { getRedirectResult } from "firebase/auth";
 
 import { useRouter } from "next/router";
 
 const AuthButtons = ({ form }) => {
-  const { googleAuth, logout } = useAuth();
+  const { googleAuth } = useAuth();
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // logout();
     getRedirectResult(auth)
       .then((redirectResult) => {
         const userCred = redirectResult.user;

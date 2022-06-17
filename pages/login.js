@@ -13,8 +13,6 @@ import AuthButtons from "../components/AuthButtons";
 const Login = () => {
   const { login, logout } = useAuth();
 
-  logout();
-
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 

@@ -11,15 +11,14 @@ const Home = () => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        router.push("/sign-up");
-      }
+      if (user) return;
+      router.push({ pathname: "/sign-up" });
     });
     // eslint-disable-next-line
   }, []);
 
   return (
-    <main className="bg-slate-50 h-screen">
+    <main className="h-screen">
       <Head>
         <title>Chaters - App for passionate chaters</title>
         <meta name="description" content="App for passionate chaters" />

@@ -4,14 +4,12 @@ import { auth, db } from "../config/firebase";
 
 import {
   createUserWithEmailAndPassword,
-  getRedirectResult,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
-  signInWithPopup,
   signInWithRedirect,
   signOut,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, onSnapshot } from "firebase/firestore";
 
 const AuthContext = createContext(null);
 
@@ -19,6 +17,29 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+
+  const getUserCred = (uid) => {
+    const userRef = doc(db, "users", uid);
+
+    const userCred = onSnapshot(userRef, (user) => {
+      console.log({ ...user.data() });
+    });
+
+    userCred();
+  };
+
+  const createUserDoc = async (uid) => {
+    console.log(uid);
+    await setDoc(doc(db, "users", uid), {
+      uid: uid,
+      username: username,
+      name: "",
+      email: email,
+      about: "",
+      profilePic: "",
+      chats: {},
+    });
+  };
 
   const signUp = async (username, email, password, setErrorEmail) => {
     try {
@@ -29,23 +50,13 @@ const AuthProvider = ({ children }) => {
       );
 
       setErrorEmail(false);
-
-      await setDoc(doc(db, "users", userCred.user.uid), {
-        uid: userCred.user.uid,
-        username: username,
-        name: "",
-        email: email,
-        about: "",
-        profilePic: "",
-        chats: {},
-      });
+      await createUserDoc(userCred.user.uid);
 
       return true;
     } catch (error) {
       if (error.message.includes("email")) {
         setErrorEmail("Email already in use");
       }
-
       return false;
     }
   };
@@ -53,9 +64,9 @@ const AuthProvider = ({ children }) => {
   const login = async (email, password, setErrorEmail, setErrorPassword) => {
     try {
       const userCred = await signInWithEmailAndPassword(auth, email, password);
-
       setErrorEmail(false);
       setErrorPassword(false);
+      // getUserCred(userCred.user.uid);
 
       return true;
     } catch (error) {
