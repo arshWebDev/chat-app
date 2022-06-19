@@ -28,8 +28,7 @@ const AuthProvider = ({ children }) => {
     userCred();
   };
 
-  const createUserDoc = async (uid) => {
-    console.log(uid);
+  const createUserDoc = async (uid, username, email) => {
     await setDoc(doc(db, "users", uid), {
       uid: uid,
       username: username,
@@ -39,6 +38,10 @@ const AuthProvider = ({ children }) => {
       profilePic: "",
       chats: {},
     });
+
+    return true;
+
+    // console.log(uid);
   };
 
   const signUp = async (username, email, password, setErrorEmail) => {
@@ -50,7 +53,8 @@ const AuthProvider = ({ children }) => {
       );
 
       setErrorEmail(false);
-      await createUserDoc(userCred.user.uid);
+      await createUserDoc(userCred.user.uid, username, email);
+      getUserCred();
 
       return true;
     } catch (error) {

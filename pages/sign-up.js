@@ -13,7 +13,9 @@ import Footer from "../components/Footer";
 import AuthButtons from "../components/AuthButtons";
 
 const SignUp = () => {
-  const { signUp } = useAuth();
+  const { signUp, logout } = useAuth();
+
+  // logout();
 
   const router = useRouter();
   const [loading, setLoading] = useState(false);
