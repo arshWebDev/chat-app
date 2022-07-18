@@ -1,17 +1,27 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import Head from "next/head";
 
 import Footer from "../components/Footer";
-import { Chats, Details, ProfilePic } from "../components/get-started";
+import { Details, ProfilePic } from "../components/get-started";
+
+import { useAuth } from "../context";
 
 const GetStarted = () => {
+  const {updateDetails} = useAuth();
   const [tab, setTab] = useState("details");
 
   const [name, setName] = useState("");
   const [about, setAbout] = useState("");
 
   const [pic, setPic] = useState(null);
+
+  const completeProfile = async () => {
+    await    updateDetails(name, about);
+
+    console.log('done');
+    // addProfilePic(pic);
+  }
 
   return (
     <main className="min-h-screen flex flex-col gap-8 items-center justify-between pt-16 md:pt-20">
@@ -41,16 +51,6 @@ const GetStarted = () => {
           >
             Profile Pic
           </button>
-          <button
-            onClick={(e) => setTab("chats")}
-            className={`w-max pt-4 pb-3.5 px-3 ${
-              tab === "chats"
-                ? "font-semibold border-b-2 border-solid border-primary"
-                : "font-medium text-gray-500 dark:text-zinc-600 bg-transparent"
-            } focus:outline-none focus:rounded-none focus:border-b-2 focus:border-solid focus:border-primary`}
-          >
-            Chats
-          </button>
         </div>
 
         {tab === "details" && (
@@ -64,11 +64,7 @@ const GetStarted = () => {
         )}
 
         {tab === "profile-pic" && (
-          <ProfilePic pic={pic} setPic={setPic} setTab={setTab} />
-        )}
-
-        {tab === "chats" && (
-          <Chats setTab={setTab} />
+          <ProfilePic pic={pic} setPic={setPic} completeProfile={completeProfile} />
         )}
       </section>
 
